@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Z_CollectibleManager : MonoBehaviour
+public class CollectibleManager : MonoBehaviour
 {
-    public static Z_CollectibleManager Instance;
-
-    public TextMeshProUGUI coinCount;
+    public static CollectibleManager Instance;
 
     private int _totalCoins;
     private int _collectedCoins;
+
+    public TextMeshProUGUI coinCount;
+
+    public string winPhrase;
 
     private void Awake()
     {
@@ -19,7 +21,6 @@ public class Z_CollectibleManager : MonoBehaviour
 
     private void Start()
     {
-        _totalCoins = FindObjectsOfType<Collectible>().Length;
         DisplayCoinCount();
     }
 
@@ -28,9 +29,16 @@ public class Z_CollectibleManager : MonoBehaviour
         coinCount.SetText(_collectedCoins + " / " + _totalCoins);
     }
 
-    public void HandleCoinCollected()
+    public void IncrementCollectedCoinCount()
     {
         _collectedCoins++;
         DisplayCoinCount();
+
+        if (_collectedCoins >= _totalCoins)
+        {
+            YouWinMenu.Instance.Show(winPhrase);
+        }
+
+        //SoundManager.Instance.PlayCoinCollectSound();
     }
 }
