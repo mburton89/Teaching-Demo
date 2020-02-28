@@ -26,7 +26,7 @@ public class YouWinMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            Show();
+            Show("Hey, you cheated!");
         }
     }
 
@@ -44,27 +44,7 @@ public class YouWinMenu : MonoBehaviour
 
     void HandleRestartPressed()
     {
-        //int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-
-        //if (Application.CanStreamedLevelBeLoaded(nextSceneIndex))
-        //{
-        //    SceneManager.LoadScene(nextSceneIndex);
-        //}
-        //else
-        //{
-        //    Debug.LogWarning("NO MORE LEVELS");
-        //}
-
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public void Show()
-    {
-        container.SetActive(true);
-        transform.localScale = Vector3.zero;
-        transform.DOScale(1, _animationSpeed).SetEase(Ease.OutBack);
-        StartCoroutine(ShowNextButton());
-        audioSource.Play();
     }
 
     public void Show(string message)
@@ -80,7 +60,6 @@ public class YouWinMenu : MonoBehaviour
     public void Hide()
     {
         container.SetActive(false);
-        //Application.Quit();
     }
 
     private IEnumerator ShowNextButton()

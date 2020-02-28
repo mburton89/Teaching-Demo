@@ -3,24 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class CollectibleManager : MonoBehaviour
+public class CoinManager : MonoBehaviour
 {
-    public static CollectibleManager Instance;
+    public static CoinManager Instance;
 
     private int _totalCoins;
     private int _collectedCoins;
 
     public TextMeshProUGUI coinCount;
 
-    public string winPhrase;
-
     private void Awake()
     {
         Instance = this;
-    }
-
-    private void Start()
-    {
+        _totalCoins = FindObjectsOfType<Coin>().Length;
         DisplayCoinCount();
     }
 
@@ -36,9 +31,7 @@ public class CollectibleManager : MonoBehaviour
 
         if (_collectedCoins >= _totalCoins)
         {
-            YouWinMenu.Instance.Show(winPhrase);
+            YouWinMenu.Instance.Show("Booyah!");
         }
-
-        //SoundManager.Instance.PlayCoinCollectSound();
     }
 }

@@ -5,10 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
-
     public AudioSource audioSource;
-
-    public AudioClip coinCollectSound;
 
     private void Awake()
     {
@@ -23,9 +20,9 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlayCoinCollectSound()
+    public void PlaySound(AudioClip audioClip)
     {
-        audioSource.clip = coinCollectSound;
+        audioSource.clip = audioClip;
         audioSource.Play();
     }
 }

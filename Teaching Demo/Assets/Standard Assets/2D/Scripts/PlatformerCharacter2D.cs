@@ -5,6 +5,8 @@ namespace UnityStandardAssets._2D
 {
     public class PlatformerCharacter2D : MonoBehaviour
     {
+        public static PlatformerCharacter2D Instance;
+
         [SerializeField] private float m_MaxSpeed = 10f;                    // The fastest the player can travel in the x axis.
         public float jumpForce = 400f;                  // Amount of force added when the player jumps.
         [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;  // Amount of maxSpeed applied to crouching movement. 1 = 100%
@@ -27,8 +29,9 @@ namespace UnityStandardAssets._2D
             m_CeilingCheck = transform.Find("CeilingCheck");
             m_Anim = GetComponent<Animator>();
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
-        }
 
+            Instance = this;
+        }
 
         private void FixedUpdate()
         {
@@ -120,6 +123,11 @@ namespace UnityStandardAssets._2D
         {
             //m_MaxSpeed = m_MaxSpeed * 2;
             m_MaxSpeed *= 2; // augmented assignment
+        }
+
+        public void AddJumpForce(int amountOfJumpForceToAdd)
+        {
+            jumpForce = jumpForce + amountOfJumpForceToAdd;
         }
     }
 }
