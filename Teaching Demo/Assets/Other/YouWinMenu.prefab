@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 3440609615376862741}
   - component: {fileID: 3440609615376862742}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TMP - WinMessage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -542,8 +542,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 66.17}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 0, y: 74}
+  m_SizeDelta: {x: 200, y: 63.72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3440609615376862741
 CanvasRenderer:
@@ -573,7 +573,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Hey, you cheated!
+  m_text: Booyah!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -583,7 +583,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 0.12941177, g: 0.17254902, b: 0.21568629, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -607,8 +607,8 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 12
   m_fontSizeMax: 36
-  m_fontStyle: 0
-  m_textAlignment: 258
+  m_fontStyle: 16
+  m_textAlignment: 514
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -806,7 +806,8 @@ MonoBehaviour:
   container: {fileID: 3440609614135787751}
   restartButton: {fileID: 3440609615822015837}
   dismissButton: {fileID: 247495905}
-  winMessage: {fileID: 3440609615376862742}
+  winMessage: BOOYAH!
+  winMessageUI: {fileID: 3440609615376862742}
   audioSource: {fileID: 535152466}
 --- !u!82 &535152466
 AudioSource:

@@ -5,8 +5,10 @@ namespace UnityStandardAssets._2D
 {
     public class PlatformerCharacter2D : MonoBehaviour
     {
+        public static PlatformerCharacter2D Instance;
+
         [SerializeField] private float m_MaxSpeed = 10f;                    // The fastest the player can travel in the x axis.
-        public float jumpForce = 400f;                  // Amount of force added when the player jumps.
+        [SerializeField] private float m_jumpForce = 800f;                  // Amount of force added when the player jumps.
         [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;  // Amount of maxSpeed applied to crouching movement. 1 = 100%
         [SerializeField] private bool m_AirControl = false;                 // Whether or not a player can steer while jumping;
         [SerializeField] private LayerMask m_WhatIsGround;                  // A mask determining what is ground to the character
@@ -23,12 +25,12 @@ namespace UnityStandardAssets._2D
         private void Awake()
         {
             // Setting up references.
+            Instance = this;
             m_GroundCheck = transform.Find("GroundCheck");
             m_CeilingCheck = transform.Find("CeilingCheck");
             m_Anim = GetComponent<Animator>();
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
         }
-
 
         private void FixedUpdate()
         {
@@ -73,13 +75,13 @@ namespace UnityStandardAssets._2D
             if (m_Grounded || m_AirControl)
             {
                 // Reduce the speed if crouching by the crouchSpeed multiplier
-                move = (crouch ? move*m_CrouchSpeed : move);
+                move = (crouch ? move * m_CrouchSpeed : move);
 
                 // The Speed animator parameter is set to the absolute value of the horizontal input.
                 m_Anim.SetFloat("Speed", Mathf.Abs(move));
 
                 // Move the character
-                m_Rigidbody2D.velocity = new Vector2(move*m_MaxSpeed, m_Rigidbody2D.velocity.y);
+                m_Rigidbody2D.velocity = new Vector2(move * m_MaxSpeed, m_Rigidbody2D.velocity.y);
 
                 // If the input is moving the player right and the player is facing left...
                 if (move > 0 && !m_FacingRight)
@@ -87,7 +89,7 @@ namespace UnityStandardAssets._2D
                     // ... flip the player.
                     Flip();
                 }
-                    // Otherwise if the input is moving the player left and the player is facing right...
+                // Otherwise if the input is moving the player left and the player is facing right...
                 else if (move < 0 && m_FacingRight)
                 {
                     // ... flip the player.
@@ -100,10 +102,9 @@ namespace UnityStandardAssets._2D
                 // Add a vertical force to the player.
                 m_Grounded = false;
                 m_Anim.SetBool("Ground", false);
-                m_Rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+                m_Rigidbody2D.AddForce(new Vector2(0f, m_jumpForce));
             }
         }
-
 
         private void Flip()
         {
@@ -116,10 +117,14 @@ namespace UnityStandardAssets._2D
             transform.localScale = theScale;
         }
 
-        public void DoubleSpeed()
+        public void MultiplySpeed(float amount)
         {
-            //m_MaxSpeed = m_MaxSpeed * 2;
-            m_MaxSpeed *= 2; // augmented assignment
+            m_MaxSpeed *= amount; // augmented assignment (m_MaxSpeed = m_MaxSpeed * 2;)
+        }
+
+        public void MultiplyJumpForce(float amount)
+        {
+            m_jumpForce *= amount;
         }
     }
 }

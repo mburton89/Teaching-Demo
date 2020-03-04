@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets._2D;
 using DG.Tweening;
 using TMPro;
 
@@ -12,21 +13,28 @@ public class YouWinMenu : MonoBehaviour
     public GameObject container;
     public Button restartButton;
     public Button dismissButton;
-    public TextMeshProUGUI winMessage;
+    public string winMessage;
+    public TextMeshProUGUI winMessageUI;
     public AudioSource audioSource;
 
     private float _animationSpeed = .25f;
 
+    private Hazard[] _hazards;
+
     private void Awake()
     {
         Instance = this;
+        _hazards = FindObjectsOfType<Hazard>();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
+            string initialWinMessage = winMessage;
+            winMessage = "Hey, You Cheated!";
             Show();
+            winMessage = initialWinMessage;
         }
     }
 
@@ -44,17 +52,6 @@ public class YouWinMenu : MonoBehaviour
 
     void HandleRestartPressed()
     {
-        //int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-
-        //if (Application.CanStreamedLevelBeLoaded(nextSceneIndex))
-        //{
-        //    SceneManager.LoadScene(nextSceneIndex);
-        //}
-        //else
-        //{
-        //    Debug.LogWarning("NO MORE LEVELS");
-        //}
-
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -64,23 +61,27 @@ public class YouWinMenu : MonoBehaviour
         transform.localScale = Vector3.zero;
         transform.DOScale(1, _animationSpeed).SetEase(Ease.OutBack);
         StartCoroutine(ShowNextButton());
+        winMessageUI.SetText(winMessage);
         audioSource.Play();
-    }
 
-    public void Show(string message)
-    {
-        container.SetActive(true);
-        transform.localScale = Vector3.zero;
-        transform.DOScale(1, _animationSpeed).SetEase(Ease.OutBack);
-        StartCoroutine(ShowNextButton());
-        winMessage.SetText(message);
-        audioSource.Play();
+        foreach (Hazard hazard in _hazards)
+        {
+            hazard.GetComponent<BoxCollider2D>().enabled = false;
+        }
+
+        PlatformerCharacter2D.Instance.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
     }
 
     public void Hide()
     {
         container.SetActive(false);
-        //Application.Quit();
+
+        foreach (Hazard hazard in _hazards)
+        {
+            hazard.GetComponent<BoxCollider2D>().enabled = true;
+        }
+
+        PlatformerCharacter2D.Instance.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
     }
 
     private IEnumerator ShowNextButton()
