@@ -15,24 +15,23 @@ public class CoinManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        _totalCoins = GetNumberOfCoinsInGame();
-        UpdateCoinCountDisplay();
+        //TODO Get _totalCoins amount
+        DisplayCoinCount();
     }
 
-    public void UpdateCoinCountDisplay()
+    void DisplayCoinCount()
     {
-        int remainingCoins = GetNumberOfCoinsInGame();
-        _collectedCoins = _totalCoins - remainingCoins;
         coinCount.SetText(_collectedCoins + " / " + _totalCoins);
+    }
 
-        if (_collectedCoins >= _totalCoins && _totalCoins > 0)
+    public void IncrementCollectedCoinCount()
+    {
+        _collectedCoins++;
+        DisplayCoinCount();
+
+        if (_collectedCoins >= _totalCoins)
         {
             YouWinMenu.Instance.Show();
         }
-    }
-
-    private int GetNumberOfCoinsInGame()
-    {
-        return 0; //TODO Actually get total amount of coins in game
     }
 }
