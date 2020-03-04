@@ -25,7 +25,7 @@ public class CoinManager : MonoBehaviour
         _collectedCoins = _totalCoins - remainingCoins;
         coinCount.SetText(_collectedCoins + " / " + _totalCoins);
 
-        if (_collectedCoins >= _totalCoins)
+        if (_collectedCoins >= _totalCoins && _totalCoins > 0)
         {
             YouWinMenu.Instance.Show();
         }
