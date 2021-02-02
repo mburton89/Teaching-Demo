@@ -16,6 +16,7 @@ public class CoinManager : MonoBehaviour
     {
         Instance = this;
         //TODO Get _totalCoins amount
+        _totalCoins = FindObjectsOfType<Coin>().Length;
         DisplayCoinCount();
     }
 

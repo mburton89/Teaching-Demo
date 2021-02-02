@@ -3,17 +3,10 @@ using System.Collections.Generic;
 using UnityStandardAssets._2D;
 using UnityEngine;
 
-public class JumpPotion : MonoBehaviour
+public class JumpPotion : Collectible
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void GetCollected()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        PlatformerCharacter2D.Instance.MultiplyJumpForce(4.5f);
     }
 }
