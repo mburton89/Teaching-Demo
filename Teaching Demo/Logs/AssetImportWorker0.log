@@ -312,3 +312,27 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 763.924275 seconds.
+  path: Assets/_MyStuff/Images/Bitcoin.png
+  artifactKey: Guid(503efe9f4c784074bb127a6cc2a9e661) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_MyStuff/Images/Bitcoin.png using Guid(503efe9f4c784074bb127a6cc2a9e661) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca6f0bbd2a9821fcae0ace8d374ebdf6') in 0.080901 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000407 seconds.
+  path: Assets/_MyStuff/Images/Potion.png
+  artifactKey: Guid(a288d18d51d6ed34fbcf1ecde0432318) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_MyStuff/Images/Potion.png using Guid(a288d18d51d6ed34fbcf1ecde0432318) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '23c20051bfb43ded85394bc69f91f90b') in 0.037149 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 64.871772 seconds.
+  path: Assets/_MyStuff/Scripts/Collectible.cs
+  artifactKey: Guid(33dc7832079033f45bfc4b4329167a00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_MyStuff/Scripts/Collectible.cs using Guid(33dc7832079033f45bfc4b4329167a00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86b009ca13facee755066ad4acb34402') in 0.024895 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 60.495663 seconds.
+  path: Assets/_MyStuff/Scripts/CoinManager.cs
+  artifactKey: Guid(f3f66140259d00648b71ff2bae1e23b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_MyStuff/Scripts/CoinManager.cs using Guid(f3f66140259d00648b71ff2bae1e23b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08f81c2d3f154a8e941ff0c13526d8b4') in 0.012766 seconds 
